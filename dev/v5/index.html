@@ -72,19 +72,57 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="documentation-for-fo-dicom-version-5">Documentation for fo-dicom version 5</h1>
 
-<p>Fellow Oak DICOM, a DICOM toolkit in C# for all .NET Standard 2.0 compatible frameworks</p>
+<p>Fellow Oak DICOM, a DICOM toolkit in C# for all .NET Standard 2.0 compatible frameworks.</p>
+<p><em>Note</em>:
+<code>fo-dicom 5</code> is the first version based on .NET Standard 2.0, earlier versions used Portable Class Library (PCL) instead.
+If you still need to rely on PCL, check the latest <code>fo-dicom 4.x</code> release and the respective documentation.</p>
 <h2 id="main-features">Main features</h2>
 <ul>
 <li>Targets .NET Standard 2.0 and will work on all platform supporting that standard</li>
 <li>DICOM dictionary version 2021b</li>
 <li>High-performance, fully asynchronous async/await API</li>
-<li>JPEG (including lossless), JPEG-LS, JPEG2000, and RLE image compression</li>
+<li>JPEG (including lossless), JPEG-LS, JPEG2000, and RLE image compression (via additional package)</li>
 <li>Supports very large datasets with content loading on demand</li>
-<li>Image rendering</li>
-<li>JSON import and export</li>
-<li>XML export</li>
+<li>Image rendering to <code>System.Drawing.Bitmap</code> or <code>SixLabors.ImageSharp</code></li>
+<li>JSON and XML import and export</li>
 <li>Anonymization</li>
+<li>DICOM services</li>
+<li>Customize components via DI container</li>
 </ul>
+<h2 id="installation">Installation</h2>
+<p>The newest <code>fo-dicom</code> release binaries can be obtained from <a href="https://www.nuget.org/packages/fo-dicom">NuGet</a>.
+This package references the core <em>fo-dicom</em> assemblies for all Microsoft and Xamarin platforms.</p>
+<h2 id="nuget-packages">NuGet Packages</h2>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.nuget.org/packages/fo-dicom/">fo-dicom</a></td>
+<td>Core package containing parser, services and tools</td>
+</tr>
+<tr>
+<td><a href="https://www.nuget.org/packages/fo-dicom.Imaging.Desktop/">fo-dicom.Imaging.Desktop</a></td>
+<td>Library with referencte to System.Drawing, required for rendering into Bitmaps</td>
+</tr>
+<tr>
+<td><a href="https://www.nuget.org/packages/fo-dicom.Desktop/">fo-dicom.Imaging.ImageSharp</a></td>
+<td>Library with reference to ImageSharp, can be used for platform independent rendering</td>
+</tr>
+<tr>
+<td><a href="https://www.nuget.org/packages/fo-dicom.NLog/">fo-dicom.NLog</a></td>
+<td>.NET connector to enable <code>fo-dicom</code> logging with NLog</td>
+</tr>
+<tr>
+<td><a href="https://www.nuget.org/packages/fo-dicom.Codecs/">fo-dicom.Codecs</a></td>
+<td>Cross-platform DICOM codecs for <code>fo-dicom</code>, developed by [Efferent Health] (<a href="https://github.com/Efferent-Health/fo-dicom.Codecs">https://github.com/Efferent-Health/fo-dicom.Codecs</a>)</td>
+</tr>
+</tbody>
+</table>
 </article>
           </div>
           
