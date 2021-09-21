@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Visual Studio 2017 build tools | fo-dicom 5 API </title>
+    <title>Visual Studio build tools | Fellow Oak DICOM 5 API </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Visual Studio 2017 build tools | fo-dicom 5 API ">
+    <meta name="title" content="Visual Studio build tools | Fellow Oak DICOM 5 API ">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -77,24 +77,11 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h3 id="visual-studio-2017-build-tools">Visual Studio 2017 build tools</h3>
+<h3 id="visual-studio-build-tools">Visual Studio build tools</h3>
 
-<p><strong>Setup/01_Build.cmd</strong> is now updated to use Visual Studio 2017 build tools. When running the command file, error messages may occur at the beginning of the run, similar to the following:</p>
-<blockquote>
-<p>DICOM.Universal.csproj: error MSB4019: The imported project &quot;C:\Program Files (x86)\MSBuild\Microsoft\WindowsXaml\v15.0\Microsoft.Windows.UI.Xaml.CSharp.targets&quot; was not found. Confirm that the path in the <import> declaration is correct, and that the file exists on disk.<p>
-</import></blockquote>
-<p>These errors do not seem to have any impact on the actual build, but should nevertheless be avoided.</p>
-<p>As far as I have been able to find out, the errors are due to a mismatch in the <strong>msbuild</strong> installation related to Visual Studio 2017. The problem is most easily solved by:</p>
-<ol>
-<li>Creating a folder <em>v15.0</em> in the <em>C:\Program Files (x86)\MSBuild\Microsoft\WindowsXaml</em> folder.</li>
-<li>From the folder <em>C:\Program Files (x86)\MSBuild\Microsoft\WindowsXaml\v14.0</em>, copy the following files:
-<ul>
-<li>Microsoft.Windows.UI.Xaml.Common.Targets</li>
-<li>Microsoft.Windows.UI.Xaml.CPP.Targets</li>
-<li>Microsoft.Windows.UI.Xaml.CSharp.Targets</li>
-</ul>
-</li>
-</ol>
+<p><strong>Setup/00_BuildAndPack5.cmd</strong> can help you to build and package the projects, that are also available on nuget.</p>
+<p>The path of <em>dotnet.exe</em> has to be included in <code>path</code> environment variable, so that the script can run successfully.</p>
+<p>The projects, that are targeting .Net Standard or .Net Core are built in release confguration and automatically create nuget packages. This feature is not available in projects that target Net Framework. So for <code>FO-DICOM.Imaging.Desktop</code> a call to <em>nuget.exe</em> has to be done to create a package for this project.</p>
 </article>
           </div>
           

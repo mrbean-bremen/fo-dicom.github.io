@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> | fo-dicom 5 API </title>
+    <title> | Fellow Oak DICOM 5 API </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" | fo-dicom 5 API ">
+    <meta name="title" content=" | Fellow Oak DICOM 5 API ">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -81,14 +81,14 @@
 <p><strong>Q:</strong> I'm trying to read an RT Dose DICOM file, but I need to access to the image data because I need the array with the raw values, is it possible to get it with <em>fo-dicom</em>?</p>
 <p><strong>A:</strong>
 You can for example obtain the pixel data from a <code>DicomDataset</code> called <code>dataset</code> for a specific frame with index <code>idx</code> like this:</p>
-<pre><code>var header = DicomPixelData.Create(dataset);
-var pixelData = PixelDataFactory.Create(header, idx);
+<pre><code class="lang-csharp">    var header = DicomPixelData.Create(dataset);
+    var pixelData = PixelDataFactory.Create(header, idx);
 </code></pre>
 <p>The <code>PixelDataFactory.Create</code> creates different pixel data types depending on dataset properties such as bits allocated, pixel representation etc. Check the actual type of <code>pixelData</code> to obtain a pixel array that you can operate on:</p>
-<pre><code>if (pixelData is GrayscalePixelDataU16) {
-  ushort[] pixels = ((GrayscalePixelDataU16)pixelData).Data;
-  ...
-}
+<pre><code class="lang-csharp">    if (pixelData is GrayscalePixelDataU16) {
+      ushort[] pixels = ((GrayscalePixelDataU16)pixelData).Data;
+      ...
+    }
 </code></pre>
 <p>etc.</p>
 <p>To obtain a full 3D grid from a multi-frame image, loop over all frames in the image, as defined by <code>header.NumberOfFrames</code>.</p>
